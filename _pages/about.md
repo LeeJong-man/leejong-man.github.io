@@ -2,13 +2,14 @@
 layout: about
 title: about
 permalink: /
-subtitle: Ph.D. in Building Energy #<a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Ph.D. in Architecture Building Energy #<a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
+    <p>[mail](leejm2020@korea.ac.kr)</p>
     <p>Seoul, South Korea</p>
     
 selected_papers: true # includes a list of papers marked as "selected={true}"
