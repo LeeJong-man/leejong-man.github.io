@@ -9,7 +9,6 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    [leejm2020@korea.ac.kr](mailto:leejm2020@korea.ac.kr) <br>
     <p>Seoul, South Korea</p>
     
 selected_papers: true # includes a list of papers marked as "selected={true}"
