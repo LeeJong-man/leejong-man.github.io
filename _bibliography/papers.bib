@@ -5,17 +5,28 @@
 
 @phdthesis{lee2026thesis,
   abbr={Thesis},
-  title={건물 에너지 최적화 및 HVAC 시스템 제어를 위한 실시간 최적화 알고리즘 연구},
+  title={극값탐색제어 기반 HVAC 시스템의 에너지 저감 성능 분석과 적용성 평가에 대한 연구},
   author={Lee, Jongman},
-  abstract={본 학위 논문은 EnergyPlus와 MATLAB 코시뮬레이션을 활용하여... (여기에 초록 내용을 넣으세요)},
+  abstract={최근 건물 부문에서의 에너지 소비 증가는 국가적 과제로 대두되고 있으며, 특히 냉난방 및 공조(HVAC) 시스템이 차지하는 비중은 매우 크다. 기존 HVAC 시스템은 대부분 고정 설정값이나 정적인 스케줄에 기반하여 운전되므로, 실시간으로 변동하는 실내 부하 및 외부 기상 조건에 능동적으로 대응하며 에너지 효율을 최적화하는 데 명확한 한계를 갖는다.
+본 연구는 이러한 문제를 해결하기 위해, 시스템에 대한 수학적 모델이 필요 없는 실시간 최적화 기법인 극값탐색제어(Extremum Seeking Control)를 DX(Direct Expansion) AHU(Air Handling Unit) 수냉식 VRF(Variable Refrigerant Flow) 시스템 및 일반 VAV(Variable Air Volume) 시스템에 적용하여, 시스템 구성 기기들의 합산 에너지 소비량인 전체 에너지 소비량 최소화를 목적으로 한다.
+연구 수행을 위해, 먼저 EnergyPlus와 MATLAB 간의 연동 시뮬레이션(Co-simulation) 환경을 구축하여 대상 시스템의 상세한 동적 모델을 개발하였다. 개발된 모델을 바탕으로 시스템 총 에너지 소비에 큰 영향을 미치는 핵심 설정값 변수(AHU 급기온도(Suply Air Temperature), 냉각탑 냉각수 온도(Condenser Water Temperature), 실외기 냉매 증발온도(Refrigerant Evaporating Temperature))를 도출하고, 각 변수의 변화가 시스템 전체 에너지 소비에 미치는 영향을 민감도 분석을 통해 정량적으로 분석하였다. 이 분석을 통해 각 변수와 에너지 소비 간의 상충 관계(trade-off) 및 U자 형태의 에너지 곡선, 즉 명확한 최적점이 존재함을 규명하였다.
+이후, 설계된 SISO(Single Input Single Output) ESC 알고리즘을 Co-simulation에 적용하여, 알고리즘이 시스템에 대한 사전 정보 없이도 각 변수의 이론적 최적점(SAT 10℃, CWT 32℃, RET 13℃)을 정확하게 탐색하고 안정적으로 수렴함을 검증하였다. 또한, 레퍼런스 모델의 VAV 시스템에도 동일한 ESC 기법을 적용하여 최적 성능(SAT 17~18℃)을 도출함으로써, 제안 시스템의 성능을 평가할 공정한 기준점을 확립하였다.
+본 연구의 핵심 기여는 시뮬레이션 검증을 넘어, 개발된 ESC 알고리즘을 실제 운영 중인 건물(K대 경영본관)의 공냉식 VRF 시스템에 적용하는 실증 연구(6장)를 수행한 점이다. 실증 실험 결과, ESC 제어는 실제 건물의 다양한 외란 및 부하 변동 하에서도 안정적으로 쾌적성을 유지하면서 최적점을 추종하였으며, 기존의 고정 설정값 운전 방식 대비 약 17.3%의 에너지 절감 효과를 달성하여 시뮬레이션 결과의 타당성과 현장 적용성을 입증하였다.
+마지막으로, 본 연구의 시뮬레이션 민감도 분석 결과와 실증 연구 결과를 종합하여, 실제 건물에 ESC를 적용하고자 할 때 고려해야 할 핵심 변수 특성과 제어기 파라미터 설정 방안 등을 포함한 ESC 모델 설계 가이드라인(7장)을 제시하였다. 본 연구는 기존에 시뮬레이션 위주로 연구되었던 ESC 제어를 복잡한 DX AHU 수냉식 VRF 시스템, 일반 VAV 시스템에 성공적으로 적용하고 공냉식 VRF 시스템이 적용된 실제 건물 실증을 통해 그 성능을 검증했다는 점에서 중요한 의의를 가지며, 향후 지능형 건물 에너지 관리 시스템(Building Energy Management System)의 핵심 최적화 로직으로 활용될 수 있을 것으로 기대된다.
+The recent surge in energy use in the building sector has emerged as a national priority, with heating, ventilation, and air-conditioning (HVAC) systems accounting for a major share. Because most legacy HVAC systems operate with fixed setpoints or static schedules, they face clear limitations in adapting to time-varying indoor loads and weather conditions to optimize energy efficiency in real time.
+To address this challenge, this study applies extremum seeking control (ESC)—a real-time, model-free optimization scheme—to a direct-expansion (DX) air-handling unit (AHU) coupled to a water-cooled variable refrigerant flow (VRF) system and to a conventional variable air volume (VAV) system, with the objective of minimizing total energy consumption (i.e., the sum of all constituent devices).
+An EnergyPlus–MATLAB co-simulation environment was developed to construct detailed dynamic models of the target systems. Using these models, key setpoint variables—AHU supply air temperature (SAT), cooling tower condenser water temperature (CWT), and outdoor unit refrigerant evaporating temperature (RET)—were identified, and their impacts on total system energy were quantified through sensitivity analysis. The analysis revealed trade-offs among variables and a U-shaped energy curve, indicating the presence of a well-defined optimum.
+The single-input single-output (SISO) ESC was then implemented in the co-simulation and, without prior plant knowledge, accurately located and stably converged to the theoretical optima (SAT 10 °C, CWT 32 °C, RET 13 °C). Applying the same ESC scheme to a reference VAV model yielded an optimal SAT of 17–18 °C, thereby establishing a fair benchmark for performance evaluation.
+The core contribution extends beyond simulation: the developed ESC was deployed on an air-cooled VRF system in an occupied building (the Business Administration Building at K University). Field tests demonstrated that ESC tracked the optimum while maintaining comfort under diverse disturbances and load variations, achieving approximately 17.3% energy savings relative to fixed-setpoint operation and confirming both the validity of the simulation results and the practical applicability of ESC.
+Finally, synthesizing the simulation-based sensitivity findings and field outcomes, a design guideline for ESC deployment in real buildings (Chapter 7) is presented, covering salient variable characteristics and controller parameterization. Overall, this study demonstrates the successful application of ESC to complex DX-AHU water-cooled VRF and conventional VAV systems and experimentally validates its performance on an air-cooled VRF system, highlighting ESC’s potential as a core optimization logic for future building energy management systems.},
   school={고려대학교 (Korea University)},
   year={2026},
-  month={January},
+  month={February},
   category={Thesis},
   selected={true},
   pdf={doctor_thesis_jongman.pdf},
-  html={https://library.korea.ac.kr/...},
-  google_scholar_id={종만님의_스칼라_논문_ID}
+  html={https://www.riss.kr/link?id=T17404041},
+  google_scholar_id={https://scholar.google.com/citations?user=6kWZvs4AAAAJ&hl=en}
 }
 
 @book{einstein1920relativity,
